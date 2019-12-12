@@ -1,2 +1,2 @@
 # pixels
-Think tank project for application development
+Foundation project for application development
