@@ -1,0 +1,30 @@
+{
+  "name": "pixels",
+  "version": "1.0.0",
+  "description": "Foundation project for application development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndpdarshana/pixels.git"
+  },
+  "author": "Prabhath Darshana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndpdarshana/pixels/issues"
+  },
+  "homepage": "https://github.com/ndpdarshana/pixels#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dataloader": "^2.0.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.7",
+    "nodemon": "^2.0.3"
+  }
+}
