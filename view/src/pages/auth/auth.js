@@ -56,8 +56,8 @@ class Auth extends Component{
       <React.Fragment>
         <div className="sidenav bg-primary">
            <div className="login-main-text">
-              <h2>Application<br/> Login Page</h2>
-              <p>Login or register from here to access.</p>
+              <h2>Pixels<br/> Login Page</h2>
+              <p>Login from here to access.</p>
            </div>
         </div>
         <div className="main">
