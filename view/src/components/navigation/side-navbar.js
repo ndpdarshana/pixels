@@ -33,10 +33,9 @@ const SideNav = props => {
         </h6>
         <ul className="nav flex-column mb-2">
           <li className="nav-item">
-            <a className="nav-link" href="#">
-            <Icon icon={roundHotel} className="icon"/>
-              Current month
-            </a>
+            <NavLink to="/user" className="nav-link">
+              User
+            </NavLink>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">

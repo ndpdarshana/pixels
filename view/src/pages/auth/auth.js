@@ -54,7 +54,7 @@ class Auth extends Component{
   render() {
     return(
       <React.Fragment>
-        <div className="sidenav bg-primary">
+        <div className="sidenav bg-dark">
            <div className="login-main-text">
               <h2>Pixels<br/> Login Page</h2>
               <p>Login from here to access.</p>

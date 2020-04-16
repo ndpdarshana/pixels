@@ -8,6 +8,7 @@ import Topnavbar from './components/navigation/top-navbar';
 import SideNav from './components/navigation/side-navbar'
 import AuthPage from './pages/auth/auth';
 import HomePage from './pages/home/home';
+import User from './pages/admin/user/user';
 import ProjectPage from './pages/project/project';
 import AuthContext from './context/auth-context';
 
@@ -42,13 +43,13 @@ class App extends Component {
                 {this.state.token && <SideNav/>}
                 <main className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                   <Switch>
-                    {!this.state.token && <Redirect from="/" to="/auth" exact/>}
-                    {!this.state.token && <Redirect from="/home" to="/auth"/>}
-                    {!this.state.token && <Route path="/auth" component={AuthPage}/>}
+                    {!this.state.token ? <Route path="/auth" component={AuthPage}/> : <Redirect from="/auth" to="/home" exact/>}
+                    {!this.state.token && <Redirect to="/auth"/>}
                     {this.state.token && <Redirect from="/" to="/home" exact/>}
                     {this.state.token && <Redirect from="/auth" to="/home" exact/>}
                     {this.state.token && <Route path="/home" component={HomePage}/>}
                     {this.state.token && <Route path="/project" component={ProjectPage}/>}
+                    {this.state.token && <Route path="/user" component={User}/>}
                   </Switch>
                 </main>
               </div>
