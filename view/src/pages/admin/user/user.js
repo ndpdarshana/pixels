@@ -1,15 +1,6 @@
 import React, {Component} from 'react';
 
-// import FormControls from '../../../components/form_controls/index';
-
-const TextField = props => {
-  return (
-  <div className="form-group">
-      <label>{props.label}</label>
-      <input type="text" className="form-control" placeholder={props.placeholder} ref={props.inputRef}/>
-   </div>
-  )
-}
+import TextField from '../../../components/form_controls/index';
 
 class User extends Component{
   state = {
