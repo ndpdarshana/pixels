@@ -41,5 +41,21 @@ module.exports = {
         token: token,
         tokenExpiration: 1
       }
+    },
+    allUsers: async () => {
+      try{
+        const users = await User.find();
+        let count = 0;
+        return users.map(user => {
+          count++;
+          return {
+            ...user._doc,
+            _id:user.id,
+            password:null
+          }
+        });
+      }catch(err){
+        throw error
+      }      
     }
   };

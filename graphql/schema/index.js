@@ -20,6 +20,7 @@ module.exports = buildSchema(`
 
   type RootQuery {
     login(email:String!, password:String!): AudthData!
+    allUsers: [User]!
   }
 
   type RootMutation {

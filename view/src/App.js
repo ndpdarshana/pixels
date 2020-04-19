@@ -37,19 +37,22 @@ class App extends Component {
               login:this.login,
               logout:this.logout
             }}>
-            {this.state.token && <Topnavbar/>}
+            {/*this.state.token &&*/ <Topnavbar/>}
             <div className="container-fluid">
               <div className="row">
-                {this.state.token && <SideNav/>}
+                {/*this.state.token &&*/ <SideNav/>}
                 <main className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                   <Switch>
-                    {!this.state.token ? <Route path="/auth" component={AuthPage}/> : <Redirect from="/auth" to="/home" exact/>}
+                    {/* {!this.state.token ? <Route path="/auth" component={AuthPage}/> : <Redirect from="/auth" to="/home" exact/>}
                     {!this.state.token && <Redirect to="/auth"/>}
                     {this.state.token && <Redirect from="/" to="/home" exact/>}
                     {this.state.token && <Redirect from="/auth" to="/home" exact/>}
                     {this.state.token && <Route path="/home" component={HomePage}/>}
                     {this.state.token && <Route path="/project" component={ProjectPage}/>}
-                    {this.state.token && <Route path="/user" component={User}/>}
+                    {this.state.token && <Route path="/user" component={User}/>} */}
+
+                    <Route path="/user" component={User}/>
+                    <Redirect to="/user"/>
                   </Switch>
                 </main>
               </div>

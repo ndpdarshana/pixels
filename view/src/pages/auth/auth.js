@@ -36,7 +36,6 @@ class Auth extends Component{
             token
             tokenExpiration
           }
-
         }
       `
     }).then(result => {
