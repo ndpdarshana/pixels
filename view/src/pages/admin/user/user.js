@@ -6,12 +6,14 @@ import baselineEdit from '@iconify/icons-ic/baseline-edit';
 import ApolloClient, {gql} from 'apollo-boost';
 
 import {TextField, TextArea} from '../../../components/form_controls/index';
+import Spinner from '../../../components/loading_spinner/spinner';
 
 class User extends Component{
   state = {
     username:'',
     password:'',
-    users:[]
+    users:[],
+    isLoading:false
   }
   
   constructor(props){
@@ -26,6 +28,7 @@ class User extends Component{
   }
 
   fetchUsers = () => {
+    this.setState({isLoading:true})
     this.client.query({
       query:gql`
         {
@@ -37,8 +40,9 @@ class User extends Component{
       `
     }).then(result => {
       this.setState({
-        users: result.data.allUsers
-      })
+        users: result.data.allUsers,
+        isLoading:false
+      });
     }).catch(error=>{
       console.log(error);
     });
@@ -112,35 +116,39 @@ class User extends Component{
             <button className="btn btn-primary" onClick={this.createHandler}>Create</button>
           </div>
         </div>
-        <div className="row">
-          <h1>Users</h1>
-        </div>
-        <div className="row">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Username</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.users.map(user => {
-                count++;
-                return (
-                  <tr key={user._id}>
-                    <th>{count}</th>
-                    <td>{user.email}</td>
-                    <td>
-                      <a href="#"><Icon icon={baselineEdit}/></a>
-                      <a href="#"><Icon icon={baselineDeleteForever}/></a>
-                    </td>
+        {this.state.isLoading ? <Spinner /> : (
+          <React.Fragment>
+            <div className="row">
+              <h1>Users</h1>
+            </div>
+            <div className="row">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Action</th>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+                </thead>
+                <tbody>
+                  {this.state.users.map(user => {
+                    count++;
+                    return (
+                      <tr key={user._id}>
+                        <th>{count}</th>
+                        <td>{user.email}</td>
+                        <td>
+                          <a href="#"><Icon icon={baselineEdit}/></a>
+                          <a href="#"><Icon icon={baselineDeleteForever}/></a>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </React.Fragment>
+        )}
       </React.Fragment>
     );
   }
