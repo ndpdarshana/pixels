@@ -3,8 +3,6 @@ import { Icon, InlineIcon } from '@iconify/react';
 import baselineDeleteForever from '@iconify/icons-ic/baseline-delete-forever';
 import baselineEdit from '@iconify/icons-ic/baseline-edit';
 
-import ApolloClient, {gql} from 'apollo-boost';
-
 import {TextField, TextArea} from '../../../components/form_controls/index';
 import Spinner from '../../../components/loading_spinner/spinner';
 
@@ -18,9 +16,6 @@ class User extends Component{
   
   constructor(props){
     super(props);
-    this.client = new ApolloClient({
-      uri:'http://localhost:8000/gql'
-    });
   }
 
   componentDidMount(){
@@ -28,16 +23,30 @@ class User extends Component{
   }
 
   fetchUsers = () => {
-    this.setState({isLoading:true})
-    this.client.query({
-      query:gql`
-        {
+    this.setState({isLoading:true});
+
+    const requestBody = {
+      query:`
+        query{
           allUsers{
             _id
             email
           }
         }
       `
+    }
+
+    fetch(this.context.url, {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+      headers:{
+        'Content-Type':'application/json'
+      }
+    }).then(res => {
+      if(res.status !== 200 && res.status !==201){
+        throw new Error('Failed status:' + res.status)
+      }
+      return res.json();
     }).then(result => {
       this.setState({
         users: result.data.allUsers,

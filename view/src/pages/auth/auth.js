@@ -1,20 +1,22 @@
 import React, {Component} from 'react';
-import ApolloClient, {gql} from 'apollo-boost';
 
 import './auth.css';
-import AuthContext from '../../context/auth-context'
+import AppContext from '../../context/app-context'
 
 class Auth extends Component{
 
-  static contextType = AuthContext;
+  static contextType = AppContext;
 
   constructor(props){
     super(props);
+    console.log(this.context)
     this.usernameEl = React.createRef();
     this.passwordEl = React.createRef();
-    this.client = new ApolloClient({
-      uri:'http://localhost:8000/gql'
-    });
+    
+  }
+
+  componentDidMount(){
+   
   }
 
   submitHandler = (event) => {
@@ -27,10 +29,9 @@ class Auth extends Component{
       return;
     }
 
-    this.client
-    .query({
-      query:gql`
-        {
+    const requestBody = {
+      query:`
+        query{
           login(email:"${username}", password:"${password}"){
             userId
             token
@@ -38,8 +39,21 @@ class Auth extends Component{
           }
         }
       `
+    }
+    
+    fetch(this.context.url, {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+      headers:{
+        'Content-Type':'application/json'
+      }
+    }).then(res => {
+      if(res.status !== 200 && res.status !==201){
+        throw new Error('Failed status:' + res.status)
+      }
+      return res.json();
     }).then(result => {
-      console.log(result);
+      console.log(result.data);
       this.context.login(
         result.data.login.token,
         result.data.login.userId,

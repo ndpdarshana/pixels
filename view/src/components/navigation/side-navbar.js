@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import { Icon } from '@iconify/react';
 import roundHomeWork from '@iconify/icons-ic/round-home-work';
-import roundHotel from '@iconify/icons-ic/round-hotel';
+import baselineWork from '@iconify/icons-ic/baseline-work';
+import baselinePeople from '@iconify/icons-ic/baseline-people';
 
 import './sidebar.css';
 
@@ -19,8 +20,14 @@ const SideNav = props => {
           </li>
           <li className="nav-item">
             <NavLink to="/project" className="nav-link">
-              <Icon icon={roundHomeWork} className="icon"/>
+              <Icon icon={baselineWork} className="icon"/>
               Project
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/hr" className="nav-link">
+              <Icon icon={baselinePeople} className="icon"/>
+              Human Resource
             </NavLink>
           </li>
         </ul>
@@ -36,24 +43,6 @@ const SideNav = props => {
             <NavLink to="/user" className="nav-link">
               User
             </NavLink>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Last quarter
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
-            </a>
           </li>
         </ul>
       </div>
