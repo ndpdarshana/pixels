@@ -8,8 +8,11 @@ import Topnavbar from './components/navigation/top-navbar';
 import SideNav from './components/navigation/side-navbar'
 import AuthPage from './pages/auth/auth';
 import HomePage from './pages/home/home';
-import User from './pages/admin/user/user';
+import UserPage from './pages/admin/user/user';
 import ProjectPage from './pages/project/project';
+import HRPage from './pages/hr/index';
+import AppSettingsPage from './pages/admin/settings/app-settings';
+
 import AppContext from './context/app-context';
 
 class App extends Component {
@@ -51,8 +54,9 @@ class App extends Component {
                       <React.Fragment>
                         <Route path="/home" component={HomePage}/>
                         <Route path="/project" component={ProjectPage}/>
-                        <Route path="/user" component={User}/>
-                        {/* <Route path="/hr" component={Hr}/> */}
+                        <Route path="/user" component={UserPage}/>
+                        <Route path="/hr" component={HRPage}/>
+                        <Route path="/app-settings" component={AppSettingsPage}/>
                       </React.Fragment>
                     )}
                   </Switch>

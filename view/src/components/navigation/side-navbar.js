@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 import roundHomeWork from '@iconify/icons-ic/round-home-work';
 import baselineWork from '@iconify/icons-ic/baseline-work';
 import baselinePeople from '@iconify/icons-ic/baseline-people';
+import baselineSettings from '@iconify/icons-ic/baseline-settings';
 
 import './sidebar.css';
 
@@ -42,6 +43,15 @@ const SideNav = props => {
           <li className="nav-item">
             <NavLink to="/user" className="nav-link">
               User
+            </NavLink>
+          </li>
+        </ul>
+
+        <ul className="nav flex-column mb-2 last-child">
+          <li className="nav-item ">
+            <NavLink to="/app-settings" className="nav-link"> 
+              <Icon icon={baselineSettings} className="icon"/>
+              Settings 
             </NavLink>
           </li>
         </ul>

@@ -9,10 +9,8 @@ class Auth extends Component{
 
   constructor(props){
     super(props);
-    console.log(this.context)
     this.usernameEl = React.createRef();
     this.passwordEl = React.createRef();
-    
   }
 
   componentDidMount(){
@@ -58,7 +56,7 @@ class Auth extends Component{
         result.data.login.token,
         result.data.login.userId,
         result.data.login.tokenExpiration
-      )
+      );
     }).catch(error => {
       console.error(error);
     });

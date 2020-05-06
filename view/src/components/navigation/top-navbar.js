@@ -1,19 +1,30 @@
-import React from 'react';
+import React, {Component} from 'react';
+
+import AppContext from '../../context/app-context'
 
 import './topnav.css';
 
-const Navbar = props => {
-  return (
-    <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-      <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/>
-      <ul className="navbar-nav px-3">
-        <li className="nav-item text-nowrap">
-          <a className="nav-link" href="#">Sign out</a>
-        </li>
-      </ul>
-    </nav>
-  )
+class Navbar extends Component{
+  static contextType = AppContext;
+
+  logoutHandler = (event) => {
+    event.preventDefault();
+    this.context.logout();
+  }
+
+  render(){
+    return (
+      <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Pixels</a>
+        <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/>
+        <ul className="navbar-nav px-3">
+          <li className="nav-item text-nowrap">
+            <span className="nav-link" onClick={this.logoutHandler}>Sign out</span>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
 }
 
 export default Navbar;

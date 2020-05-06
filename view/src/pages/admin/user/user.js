@@ -3,6 +3,8 @@ import { Icon, InlineIcon } from '@iconify/react';
 import baselineDeleteForever from '@iconify/icons-ic/baseline-delete-forever';
 import baselineEdit from '@iconify/icons-ic/baseline-edit';
 
+import AppContext from '../../../context/app-context'
+
 import {TextField, TextArea} from '../../../components/form_controls/index';
 import Spinner from '../../../components/loading_spinner/spinner';
 
@@ -13,6 +15,8 @@ class User extends Component{
     users:[],
     isLoading:false
   }
+
+  static contextType = AppContext;
   
   constructor(props){
     super(props);
@@ -35,6 +39,8 @@ class User extends Component{
         }
       `
     }
+
+    console.log(this.context.url)
 
     fetch(this.context.url, {
       method: 'POST',
